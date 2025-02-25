@@ -1,0 +1,13 @@
+.button {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  border: none;
+  background-color: transparent;
+  transition: transform 250ms linear;
+}
+
+.button:hover,
+.button:focus {
+  transform: scale(1.1);
+}
