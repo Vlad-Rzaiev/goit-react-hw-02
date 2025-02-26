@@ -2,12 +2,15 @@ import { useState, useEffect } from 'react';
 import Section from './components/section/Section';
 import Container from './components/container/Container';
 import DarkModeButton from './components/DakModeButton/DakModeButton';
+import Description from './components/Description/Description';
+import Options from './components/Options/Options';
+import Feedback from './components/Feedback/Feedback';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const savedTheme = localStorage.getItem('theme');
 
-    if (savedTheme) {
+    if (savedTheme !== null) {
       return JSON.parse(savedTheme);
     }
 
@@ -24,14 +27,19 @@ function App() {
   }, [isDarkMode]);
 
   const toggleDarkMode = () => {
-    setIsDarkMode(prev => !prev);
+    setIsDarkMode(state => !state);
   };
 
   return (
     <Section>
       <Container>
         <DarkModeButton onClick={toggleDarkMode} isDarkMode={isDarkMode} />
-        <h1>Hello React</h1>
+
+        <Description />
+
+        <Options />
+
+        <Feedback />
       </Container>
     </Section>
   );
