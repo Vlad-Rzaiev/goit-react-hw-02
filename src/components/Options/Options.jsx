@@ -1,12 +1,17 @@
 import styles from './Options.module.css';
 
-export default function Options() {
+export default function Options({ name, update }) {
   return (
     <div className={styles.optionsContainer}>
-      <button className={styles.optionsButton}>Good</button>
-      <button className={styles.optionsButton}>Neutral</button>
-      <button className={styles.optionsButton}>Bad</button>
-      <button className={styles.optionsButton}>Reset</button>
+      {name.map((type, idx) => (
+        <button
+          className={styles.optionsButton}
+          key={name[idx]}
+          onClick={() => update(type)}
+        >
+          {type}
+        </button>
+      ))}
     </div>
   );
 }

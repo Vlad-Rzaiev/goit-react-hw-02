@@ -7,39 +7,29 @@ import Options from './components/Options/Options';
 import Feedback from './components/Feedback/Feedback';
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    const savedTheme = localStorage.getItem('theme');
-
-    if (savedTheme !== null) {
-      return JSON.parse(savedTheme);
-    }
-
-    return false;
+  const [values, setValues] = useState({
+    good: 0,
+    neutral: 0,
+    bad: 0,
   });
 
-  useEffect(() => {
-    if (isDarkMode) {
-      document.body.classList.add('darkMode');
-    } else {
-      document.body.classList.remove('darkMode');
-    }
-    localStorage.setItem('theme', JSON.stringify(isDarkMode));
-  }, [isDarkMode]);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(state => !state);
+  const updateFeedback = feedbackType => {
+    setValues(prevArr => ({
+      ...prevArr,
+      [feedbackType]: prevArr[feedbackType] + 1,
+    }));
   };
 
   return (
     <Section>
       <Container>
-        <DarkModeButton onClick={toggleDarkMode} isDarkMode={isDarkMode} />
+        <DarkModeButton />
 
         <Description />
 
-        <Options />
+        <Options name={Object.keys(values)} update={updateFeedback} />
 
-        <Feedback />
+        <Feedback titles={Object.keys(values)} values={Object.values(values)} />
       </Container>
     </Section>
   );
