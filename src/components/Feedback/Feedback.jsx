@@ -1,6 +1,11 @@
 import styles from './Feedback.module.css';
 
-export default function Feedback({ titles, values }) {
+export default function Feedback({
+  titles,
+  values,
+  totalFeedback,
+  positiveFeedback,
+}) {
   return (
     <div className={styles.feedbackContainer}>
       {titles.map((title, idx) => (
@@ -8,6 +13,10 @@ export default function Feedback({ titles, values }) {
           {title}: {values[idx]}
         </p>
       ))}
+      <p className={styles.feedbackText}>Total: {totalFeedback}</p>
+      <p className={styles.feedbackText}>
+        Positive: {isNaN(positiveFeedback) ? 0 : positiveFeedback}%
+      </p>
     </div>
   );
 }
