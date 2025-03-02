@@ -53,7 +53,7 @@ function App() {
         <Description />
 
         <Options
-          name={Object.keys(values)}
+          buttonTitles={Object.keys(values)}
           update={updateFeedback}
           totalFeedback={totalFeedback}
           reset={resetTotalFeedback}
@@ -63,7 +63,7 @@ function App() {
           <Notification />
         ) : (
           <Feedback
-            titles={Object.keys(values)}
+            keys={Object.keys(values)}
             values={Object.values(values)}
             totalFeedback={totalFeedback}
             positiveFeedback={stat}

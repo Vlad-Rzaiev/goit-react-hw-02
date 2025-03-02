@@ -1,19 +1,25 @@
 import styles from './Options.module.css';
 
-export default function Options({ name, update, totalFeedback, reset }) {
+export default function Options({
+  buttonTitles,
+  update,
+  totalFeedback,
+  reset,
+}) {
   return (
     <div className={styles.optionsContainer}>
-      {name.map((type, idx) => (
+      {buttonTitles.map((type, idx) => (
         <button
           className={styles.optionsButton}
-          key={name[idx]}
+          key={buttonTitles[idx]}
           onClick={() => update(type)}
+          type="button"
         >
           {type}
         </button>
       ))}
       {totalFeedback > 0 && (
-        <button className={styles.optionsButton} onClick={reset}>
+        <button className={styles.optionsButton} onClick={reset} type="button">
           Reset
         </button>
       )}
