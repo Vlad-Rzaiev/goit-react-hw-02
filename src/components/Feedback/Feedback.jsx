@@ -14,9 +14,7 @@ export default function Feedback({
         </p>
       ))}
       <p className={styles.feedbackText}>Total: {totalFeedback}</p>
-      <p className={styles.feedbackText}>
-        Positive: {isNaN(positiveFeedback) ? 0 : positiveFeedback}%
-      </p>
+      <p className={styles.feedbackText}>Positive: {positiveFeedback}%</p>
     </div>
   );
 }

@@ -43,7 +43,7 @@ function App() {
     });
   };
 
-  const stat = Math.round((values.good / (values.good + values.bad)) * 100);
+  const stat = Math.round((values.good / totalFeedback) * 100) || 0;
 
   return (
     <Section>
